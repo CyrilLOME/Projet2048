@@ -4,8 +4,11 @@
 #include <math.h>
 using namespace std;
 
-Grille::Grille(int i, int j)
+//Grille::Grille(int i, int j, QObject *parent) : QObject(parent)
+Grille::Grille(QObject *parent) : QObject(parent)
 {
+    int i = 4;
+    int j = 4;
     if((i>0) && (j>0)){
         ni = i;
         nj = j;
@@ -26,6 +29,8 @@ Grille::Grille(int i, int j)
         }
     }
     T[0][0] = 1;
+
+    CaseChanged();
 }
 
 Grille::~Grille()
@@ -41,7 +46,7 @@ Grille::~Grille()
     }
 }
 
-Grille::Grille(const Grille &G)
+Grille::Grille(const Grille &G, QObject *parent) : QObject(parent)
 {
     ni = G.ni;
     nj = G.nj;
@@ -58,6 +63,7 @@ Grille::Grille(const Grille &G)
             T[k][p] = G.T[k][p];
         }
     }
+    CaseChanged();
 }
 
 Grille& Grille::operator=(const Grille &G)
@@ -109,6 +115,10 @@ void Grille::Print()
         cout<<endl;
     }
     cout<<endl;
+}
+
+QString Grille::readCase11() {
+    return QString::number(this->T[1][1]);
 }
 
 void Grille::IterationBas()
@@ -165,6 +175,7 @@ void Grille::IterationBas()
 
     // Fin de l'itération : on raffraîchit l'affichage
     this->Print();
+    CaseChanged();
 }
 
 void Grille::IterationHaut()
@@ -221,6 +232,7 @@ void Grille::IterationHaut()
 
     // Fin de l'itération : on raffraîchit l'affichage
     this->Print();
+    CaseChanged();
 }
 
 void Grille::IterationDroite()
@@ -277,6 +289,7 @@ void Grille::IterationDroite()
 
     // Fin de l'itération : on raffraîchit l'affichage
     this->Print();
+    CaseChanged();
 }
 
 void Grille::IterationGauche()
@@ -333,6 +346,7 @@ void Grille::IterationGauche()
 
     // Fin de l'itération : on raffraîchit l'affichage
     this->Print();
+    CaseChanged();
 }
 
 void Grille::AjoutCase()
@@ -347,6 +361,7 @@ void Grille::AjoutCase()
     {
         cout<<"Case déjà occupée"<<endl;
     }
+    CaseChanged();
 }
 
 
