@@ -4,22 +4,31 @@
 #include <iostream>
 using namespace std;
 
-class Grille
+#include <QObject>
+
+class Grille : public QObject
 {
+    Q_OBJECT
 public:
-    Grille(int i, int j);
+    //explicit Grille(int i, int j, QObject *parent = 0);
+    explicit Grille(QObject *parent = 0);
     ~Grille();
-    Grille(const Grille &G);
+    explicit Grille(const Grille &G, QObject *parent = 0);
     Grille& operator=(const Grille &G);
     void Set(int i, int j, int a);
     void Print();
-    void IterationBas();
-    void IterationHaut();
-    void IterationDroite();
-    void IterationGauche();
-    void AjoutCase();
+    Q_INVOKABLE void IterationBas();
+    Q_INVOKABLE void IterationHaut();
+    Q_INVOKABLE void IterationDroite();
+    Q_INVOKABLE void IterationGauche();
+    Q_INVOKABLE void AjoutCase();
 
+    Q_PROPERTY(QString Case11 READ readCase11 NOTIFY CaseChanged);
 
+    QString readCase11();
+
+signals:
+    void CaseChanged();
 
 private:
     int ni;
