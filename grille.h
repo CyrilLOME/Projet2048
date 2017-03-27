@@ -23,9 +23,10 @@ public:
     Q_INVOKABLE void IterationGauche();
     Q_INVOKABLE void AjoutCase();
 
-    Q_PROPERTY(QString Case11 READ readCase11 NOTIFY CaseChanged);
-
-    QString readCase11();
+    Q_PROPERTY(QList Cases READ readCases NOTIFY CaseChanged);
+    Q_PROPERTY(QList CasesColor READ readCasesColor NOTIFY CaseChanged);
+    QList<QList<QString>> readCases();
+    QList<QList<QString>> readCasesColor();
 
 signals:
     void CaseChanged();

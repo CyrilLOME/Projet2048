@@ -117,8 +117,64 @@ void Grille::Print()
     cout<<endl;
 }
 
-QString Grille::readCase11() {
-    return QString::number(this->T[1][1]);
+// Mise à jour de l'interface
+
+QList<QList<QString>> Grille::readCases() { //Attention ! case (1,1) correspond à T[0][0] car les indices commencent à 0 dans la grille
+
+    //QList<QList<QString>> Cases = QList<>();
+    QList<QList<QString>> Cases;
+    for (int i=0; i<ni; i++)
+    {
+        QList<QString> Ligne;// = QList<>();
+        for (int j=0; j<nj; j++)
+        {
+            if(this->T[i][j] == 0)
+            {
+                Ligne.append(" ");
+            }
+            else
+            {
+                int num = 1;
+                for(int k=0; k<T[i][j]; k++)
+                {
+                    num = num*2;
+                }
+                QString text = QString::number(num);
+                Ligne.append(text);
+            }
+        }
+        Cases.append(Ligne);
+    }
+    return Cases;
+}
+
+QList<QList<QString>> Grille::readCasesColor() { //Attention ! case (1,1) correspond à T[0][0] car les indices commencent à 0 dans la grille
+    QList<QList<QString>> CasesColor;
+    for (int i=0; i<ni; i++)
+    {
+        QList<QString> LigneColor;
+        for (int j=0; j<nj; j++)
+        {
+            QString color;
+            switch(this->T[i][j])
+            {
+                case 0 : color = "#f27b7b";
+                case 1 : color = "#FF5E4D";
+                case 2 : color = "#E9383F";
+                case 3 : color = "#C72C48";
+                case 4 : color = "#FE1B00";
+                case 5 : color = "#ED0000";
+                case 6 : color = "#D90115";
+                case 7 : color = "#A91101";
+                case 8 : color = "#FD3F92";
+                case 9 : color = "#C71585";
+                case 10 : color = "#6E0B14";
+            };
+            LigneColor.append(color);
+        }
+        CasesColor.append(LigneColor);
+    }
+    return CasesColor;
 }
 
 void Grille::IterationBas()
