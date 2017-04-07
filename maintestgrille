@@ -1,0 +1,78 @@
+#include <iostream>
+#include "testgrille.h"
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    TestGrille G1(4,4);
+    /*G1.Set(1,0,3);
+    G1.Set(3,0,2);
+    G1.Set(0,2,1);
+    G1.Set(2,2,1);
+    G1.Set(3,2,2);*/
+    G1.Print();
+
+    int direction;
+    cout<<"Voulez vous faire une itération ?"<<endl;
+
+    /*
+    cin>>direction;
+    if(cin)
+    {
+        G1.IterationBas();
+    }
+
+    cout<<"Voulez vous faire une itération ?"<<endl;
+    cin>>direction;
+    if(cin)
+    {
+        G1.IterationDroite();
+    }
+
+    cout<<"Voulez vous faire une itération ?"<<endl;
+    cin>>direction;
+    if(cin)
+    {
+        G1.IterationHaut();
+    }
+
+    cout<<"Voulez vous faire une itération ?"<<endl;
+    cin>>direction;
+    if(cin)
+    {
+        G1.IterationGauche();
+    }*/
+
+    cout<<"Entrez la commande que vous voulez effectuer (Gauche = 1, Bas = 2, Droite = 3 et Haut = 5) : ";
+    cin>>direction;
+    cout<<endl;
+
+    while(cin)
+    {
+        switch(direction)
+        {
+        case 1:
+            G1.IterationGauche();
+            break;
+        case 2:
+            G1.IterationBas();
+            break;
+        case 3:
+            G1.IterationDroite();
+            break;
+        case 5:
+            G1.IterationHaut();
+            break;
+        default:
+            cout<<"Erreur, merci de recommencer"<<endl;
+        }
+
+        G1.AjoutCase();
+
+        cout<<"Entrez la commande que vous voulez effectuer (Bas = 1, Haut = 2, Droite = 3 et Gauche = 4) : ";
+        cin>>direction;
+        cout<<endl;
+    }
+
+    return 0;
+}
