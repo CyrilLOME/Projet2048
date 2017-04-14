@@ -18,3 +18,5 @@ Le jeu n'est pas programmé en entier :
 On devrait obtenir [0 0 4 4] car il ne peut y avoir qu'un addition par tour.
 Ce problème aurait pu être traité si le jeu fonctionnait et s'il nous disposions de plus de temps.
 (2) Il y a un début de liaison entre l'interface graphique de la grille et la grille : conversion de la grille en QList de QList de Qstring (resp. QColor pour les couleurs des cases) (c'est-à-dire, un matrice de QString (resp. QColor) lisible par qml). Nénamoins, le programme ne fonctionne pas et renvoie une liste de liste d'éléments vides. Qt ne peut donc pas lire les informations de la grille.
+
+Pour vérifier que la grille fonctionne effectivement, il est possible d'utiliser le projet parallèle C++ qui implémente la classe TestGrille et la teste dans le mainTestGrille. Le jeu s'éffectue dans un terminal standard, sans interface graphique.
