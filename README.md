@@ -1,4 +1,4 @@
-# Projet2048
+# Projet2048 Cyril LOME et Alexandre DUFOUR
 Repository for a 2048 school project in c++
 
 Le but de ce projet est de programmer un jeu de 2048 (règles classiques) avec une interface graphique.
